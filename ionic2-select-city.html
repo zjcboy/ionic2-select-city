@@ -1,0 +1,28 @@
+<ion-navbar *navbar>
+  <ion-title>
+    地区选择
+  </ion-title>
+</ion-navbar>
+<ion-content class="locale-select">
+  <!--<ion-list *ngIf="locales && !citys && !area">
+    <ion-list-header>当前地区</ion-list-header>
+    <ion-item>
+      <ion-icon name="pin" item-left></ion-icon>
+      <ion-spinner item-right style="width: 20px; height: 20px"></ion-spinner>
+      济南市 市中区
+    </ion-item>
+  </ion-list>-->
+  <ion-list *ngIf="locales && !citys && !area">
+    <ion-list-header>省份</ion-list-header>
+    <button ion-item *ngFor="let locale of locales; let i = index" (click)="selectCity(i)">{{locale.name}}</button>
+  </ion-list>
+  <ion-list *ngIf="citys && !area">
+    <ion-list-header>城市</ion-list-header>
+    <button ion-item *ngFor="let city of citys; let j = index" (click)="selectCity(j, true)">{{city.name}}</button>
+  </ion-list>
+  <ion-list *ngIf="area">
+    <ion-list-header>区/县</ion-list-header>
+    <ion-item *ngFor="let item of area;" (click)="selectCity(item)">{{item}}</ion-item>
+  </ion-list>
+
+</ion-content>
